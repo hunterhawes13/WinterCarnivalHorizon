@@ -11,6 +11,26 @@ export default class Comment extends React.Component {
 	};
 }
 
+renderImportance() {
+	const { chat, isCompleted } = this.props;
+ console.log(this.props)
+	const commentStyle = {
+		color: isCompleted ? 'red' : 'black',
+		cursor: 'pointer'
+
+	}
+
+	return(
+		<td style={commentStyle}
+			onClick={this.props.toggleComment.bind(this, chat)}
+		>
+			{chat}
+		 </td>
+
+		);
+}
+
+
 renderActionSection() {
 	if (this.state.isEditing) {
 		return (
@@ -23,8 +43,8 @@ renderActionSection() {
 
 	return (
 		<td>
-		<button onClick={this.onEditClick.bind(this)}>Edit</button>
-		<button>Delete</button>
+		<button onClick={this.onEditClick.bind(this)}>Save</button>
+		<button onClick={this.props.deleteComment.bind(this, this.props.chat)}>Delete</button>
 		</td>	
 	);
 
@@ -34,7 +54,7 @@ renderActionSection() {
     return (
 
 		<tr>
-			<td>{this.props.chat}</td>
+			{this.renderImportance()}
 			{this.renderActionSection()}
 		</tr>
     );

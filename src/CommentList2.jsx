@@ -5,8 +5,10 @@ import Comment from './Comment.jsx';
 
 export default class CommentList2 extends React.Component {
 	renderItems() {
-		return _.map(this.props.chats, (chat, index) => <Comment key ={index
-		} {...chat} />);
+		const props = _.omit(this.props, 'chats');
+
+		return _.map(this.props.chats, (comment, index) => <Comment key ={index
+		} {...comment} {...props}  />);
 	}
 
   render() {

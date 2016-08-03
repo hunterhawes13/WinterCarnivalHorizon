@@ -17,7 +17,7 @@ const todo = [
     render() {
       return (
         <div>
-        <h1>Comments</h1>
+        <h1>Medallian Hunt Chat</h1>
         <CommentList />
 
 
